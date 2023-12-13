@@ -11,9 +11,9 @@ class ArduinoController:
         self.serial_connection = None
         self.is_sending = False
         self.thread = None
-        self.root = None  # Thêm biến root
-        self.last_send_time = 0  # Thêm biến last_send_time
-        self.interval = 0.01  # Thêm biến interval và đặt giá trị mặc định
+        self.root = None  
+        self.last_send_time = 0 
+        self.interval = 0.01
 
     def connect(self, serial_port):
         try:
@@ -47,7 +47,7 @@ class ArduinoController:
     def toggle_sending(self, serial_port, key, interval):
         if not self.is_sending:
             self.is_sending = True
-            self.interval = interval  # Cập nhật giá trị thời gian nghỉ
+            self.interval = interval
             self.connect(serial_port)
 
             # Thêm hàm chờ đợi trước khi gửi tín hiệu
@@ -90,7 +90,7 @@ class ArduinoApp:
 
         self.toggle_button.grid(row=3, column=0, columnspan=2, pady=10)
 
-        # Đăng ký sự kiện nhấn phím F1
+      
         keyboard.on_press_key("F1", self.on_f1_pressed)
 
     def toggle_sending(self):
@@ -133,7 +133,7 @@ class ArduinoApp:
             self.interval_entry["state"] = tk.NORMAL
 
     def on_f1_pressed(self, event):
-        # Xử lý sự kiện nhấn phím F1 để bắt đầu hoặc dừng
+      
         self.toggle_sending()
 
 if __name__ == "__main__":
